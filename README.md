@@ -17,5 +17,5 @@ npm start
 to build for deploy, do:
 
 ```
-npm build
+npm run build
 ```

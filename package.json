@@ -5,7 +5,7 @@
   "main": "index.es6",
   "scripts": {
     "start": "budo index.es6:bundle.js -l -v -- -t babelify -d -e",
-    "build": "browserify index.js | uglifyjs -cm > bundle.js"
+    "build": "browserify -t babelify index.es6 | uglifyjs -cm > bundle.js"
   },
   "repository": {
     "type": "git",
