@@ -1,0 +1,10 @@
+x pushstate url caching
+x styling
+- help tips in form
+- modal and graph snabbdom animations
+x key points
+x svg graph
+x export to csv
+x churn calculation
+- intro modal
+- test safari lol
