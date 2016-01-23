@@ -300,10 +300,10 @@ function calculateKeyPoints(months) {
 // Also pass in a formData Map that has churn, rev, burn, cpa
 // last needs sales_per_month, total_sales, cash, and total_revenue
 function calculateMonth(last, data, date) {
-  let churn_per_month = Math.round(data.get('churn') / 100 * last.get('sales_per_month'))
+  let churn_per_month = Math.round(data.get('churn') / 100 * last.get('total_sales'))
   // Last month's sales plus percentage growth minus total churn this month
   let sales_per_month = Math.round(last.get('sales_per_month') + data.get('perc') / 100 * last.get('sales_per_month'))
-  let total_sales = last.get('total_sales') + sales_per_month
+  let total_sales = last.get('total_sales') + sales_per_month - churn_per_month
   let net = last.get('total_revenue') + sales_per_month * data.get('rev') + churn_per_month * -data.get('rev') - data.get('burn')
 
   return fromJS({
@@ -314,7 +314,7 @@ function calculateMonth(last, data, date) {
   , sales_per_month: sales_per_month
   , revenue_per_month: sales_per_month * data.get('rev')
   , cpa_per_month: sales_per_month * -data.get('cpa')
-  , total_revenue: last.get('total_revenue') + sales_per_month * data.get('rev')
+  , total_revenue: last.get('total_revenue') + sales_per_month * data.get('rev') + churn_per_month * -data.get('rev')
   , churn_amount: churn_per_month * -data.get('rev')
   , churn_per_month: churn_per_month
   })
