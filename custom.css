@@ -5,7 +5,7 @@ html, body {
 }
 * {
   box-sizing: border-box;
-  font-family: 'Open Sans' Helvetica sans-serif;
+  font-family: 'Open Sans', Helvetica, sans-serif;
   margin: 0;
   padding: 0;
 }
